@@ -153,10 +153,11 @@
             color: white;
             padding: 5px 10px;
             border-radius: 15px;
-            font-size: 14px;
+            font-size: 10px;
+            display: inline-block;
         }
         
-        .experience-item, .education-item {
+        .experience-item, .education-item, .project-item {
             margin-bottom: 20px;
         }
         
@@ -183,7 +184,7 @@
             align-items: center;
             color: var(--primary-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
         }
         
         .link-item:hover {
@@ -193,15 +194,39 @@
         .link-item i {
             margin-right: 8px;
         }
+
+        .tech-stack {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .tech-stack strong {
+            color: #555;
+        }
+
+        /* Nasconde elementi che non devono apparire nella stampa */
+        .no-print {
+            display: none;
+        }
         
         @media print {
             body {
                 padding: 0;
                 background-color: white;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             
             .cv-container {
                 box-shadow: none;
+            }
+            
+            .left-column {
+                background-color: var(--secondary-color) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             
             a {
@@ -209,10 +234,50 @@
                 color: var(--primary-color);
             }
             
+            .skill-tag {
+                background-color: var(--primary-color) !important;
+                color: white !important;
+                border: 1px solid var(--primary-color) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            h2::before {
+                background-color: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Nasconde la barra degli indirizzi e altre UI del browser quando si stampa */
             @page {
                 size: A4;
-                margin: 0;
+                margin: 10mm;
             }
+
+            /* Nasconde completamente gli elementi che non devono apparire in stampa */
+            .no-print, .no-print * {
+                display: none !important;
+            }
+        }
+
+        /* Pulsante di stampa personalizzato */
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background-color: #1c4ea0;
         }
     </style>
 </head>
@@ -220,8 +285,7 @@
     <div class="cv-container">
         <div class="left-column">
             <div class="photo-container">
-                <img id="profile-image" src="gabriele_groppo.jpg" alt="Foto profilo">
-                <span id="photo-placeholder">Aggiungi foto</span>
+                <img id="profile-image" alt="Foto profilo" src="gabriele_groppo.jpg">
             </div>
             
             <div class="section">
@@ -238,10 +302,10 @@
                 <div class="skill-category">
                     <h4>Software Engineering</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Unified Process</span>
-                        <span class="skill-tag">Design Patterns</span>
-                        <span class="skill-tag">Architectural Patterns</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">UP</span>
                         <span class="skill-tag">TDD</span>
+                        <span class="skill-tag">Architectural & Design Patterns</span>
                     </div>
                 </div>
                 
@@ -250,16 +314,15 @@
                     <div class="skill-list">
                         <span class="skill-tag">Flutter</span>
                         <span class="skill-tag">Java</span>
-                        <span class="skill-tag">NextJS</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
                     <h4>CI/CD & Tools</h4>
                     <div class="skill-list">
+                        <span class="skill-tag">GitHub Actions</span>
                         <span class="skill-tag">Linux</span>
                         <span class="skill-tag">SonarQube</span>
-                        <span class="skill-tag">GitHub Actions</span>
                     </div>
                 </div>
                 
@@ -277,7 +340,7 @@
                         <span class="skill-tag">Java</span>
                         <span class="skill-tag">Flutter</span>
                         <span class="skill-tag">C</span>
-                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">JS</span>
                         <span class="skill-tag">Python</span>
                     </div>
                 </div>
@@ -287,14 +350,6 @@
                     <div class="skill-list">
                         <span class="skill-tag">Problem-solving</span>
                         <span class="skill-tag">Teamwork</span>
-                        <span class="skill-tag">Adattabilità</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Lingue</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Inglese B2</span>
                     </div>
                 </div>
             </div>
@@ -328,16 +383,15 @@
                 <div class="experience-item">
                     <h3>IT Assistant</h3>
                     <div class="date-location">Mendino SRL | 2024 - Presente</div>
-                    <div class="description">
-                        Ottimizzazione del lavoro richiesto per l'upload di asset grafici aziendali tramite script Python.
+                    <div class="description">Optimizing efforts for uploading company graphical assets through Python scripts.
                     </div>
                 </div>
                 
                 <div class="experience-item">
-                    <h3>Club Secretary</h3>
+                    <h3>Club Secretary - Volunteer</h3>
                     <div class="date-location">Rotaract Club Abbiategrasso | 2024 - Presente</div>
                     <div class="description">
-                        Sviluppo di competenze di leadership, comunicazione e organizzazione.
+                        Leadership and comunication skills in organizing events and managing club activities.
                     </div>
                 </div>
                 
@@ -345,7 +399,7 @@
                     <h3>Professional Basketball Player</h3>
                     <div class="date-location">ASD Pallacanestro Magenta & Baskettiamo Vittuone | 2022 - 2023</div>
                     <div class="description">
-                        Apprendimento di lavoro di squadra, resilienza e gestione dello stress in ambienti competitivi.
+                        Experience in competitive sports, developing teamwork and stress management skills.
                     </div>
                 </div>
             </div>
@@ -355,15 +409,15 @@
                 
                 <div class="education-item">
                     <h3>Università degli Studi di Milano-Bicocca</h3>
-                    <div class="date-location">Studente di Informatica | 2022 - Presente</div>
+                    <div class="date-location">IT Student | 2022 - Presente</div>
                 </div>
                 
                 <div class="education-item">
                     <h3>IIS Alessandrini Vittuone</h3>
-                    <div class="date-location">Diploma di Scuola Superiore in Informatica | 2017 - 2022</div>
+                    <div class="date-location">High School IT Diploma | 2017 - 2022</div>
                 </div>
             </div>
-        </div>
     </div>
+</div>
 </body>
 </html>
