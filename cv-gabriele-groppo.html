@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriele Groppo - CV</title>
+    <style>
+        :root {
+            --primary-color: #2d63c8;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --accent-color: #e6e6e6;
+            --border-color: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: white;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .cv-container {
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 30px;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .left-column {
+            background-color: var(--secondary-color);
+            padding: 30px;
+        }
+        
+        .right-column {
+            padding: 30px;
+        }
+        
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background-color: var(--accent-color);
+            border: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1, h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        
+        h2 {
+            font-size: 22px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            color: #777;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .bio {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .skill-category h4 {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .date-location {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+        
+        .description {
+            font-size: 15px;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .link-item {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .link-item:hover {
+            text-decoration: underline;
+        }
+        
+        .link-item i {
+            margin-right: 8px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+            }
+            
+            a {
+                text-decoration: none;
+                color: var(--primary-color);
+            }
+            
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="left-column">
+            <div class="photo-container">
+                <img id="profile-image" src="gabriele_groppo.jpg" alt="Foto profilo">
+                <span id="photo-placeholder">Aggiungi foto</span>
+            </div>
+            
+            <div class="section">
+                <h2>Contatti</h2>
+                <div class="contact-item">
+                    <i>📧</i>
+                    <a href="mailto:gabriele.groppo03@gmail.com">gabriele.groppo03@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Competenze</h2>
+                
+                <div class="skill-category">
+                    <h4>Software Engineering</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Unified Process</span>
+                        <span class="skill-tag">Design Patterns</span>
+                        <span class="skill-tag">Architectural Patterns</span>
+                        <span class="skill-tag">TDD</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Sviluppo Mobile/Web</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">NextJS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>CI/CD & Tools</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Database</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Programmazione</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Competenze Trasversali</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Problem-solving</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Adattabilità</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Lingue</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Inglese B2</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Link</h2>
+                <div class="links">
+                    <a href="https://github.com/GabrieleGroppo" class="link-item" target="_blank">
+                        <i>🔗</i> GitHub
+                    </a>
+                    <a href="https://gabrielegroppo.it" class="link-item" target="_blank">
+                        <i>🔗</i> Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <h1>Gabriele Groppo</h1>
+            <div class="subtitle">IT Student & Software Developer</div>
+            
+            <div class="bio">
+                Computer science student from Milan with experience programming,
+                Software Engineering, databases. Always eager to explore new technologies,
+                solve complex problems, and work on innovative projects.
+            </div>
+            
+            <div class="section">
+                <h2>Esperienze</h2>
+                
+                <div class="experience-item">
+                    <h3>IT Assistant</h3>
+                    <div class="date-location">Mendino SRL | 2024 - Presente</div>
+                    <div class="description">
+                        Ottimizzazione del lavoro richiesto per l'upload di asset grafici aziendali tramite script Python.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Club Secretary</h3>
+                    <div class="date-location">Rotaract Club Abbiategrasso | 2024 - Presente</div>
+                    <div class="description">
+                        Sviluppo di competenze di leadership, comunicazione e organizzazione.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Professional Basketball Player</h3>
+                    <div class="date-location">ASD Pallacanestro Magenta & Baskettiamo Vittuone | 2022 - 2023</div>
+                    <div class="description">
+                        Apprendimento di lavoro di squadra, resilienza e gestione dello stress in ambienti competitivi.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Formazione</h2>
+                
+                <div class="education-item">
+                    <h3>Università degli Studi di Milano-Bicocca</h3>
+                    <div class="date-location">Studente di Informatica | 2022 - Presente</div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>IIS Alessandrini Vittuone</h3>
+                    <div class="date-location">Diploma di Scuola Superiore in Informatica | 2017 - 2022</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
